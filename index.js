@@ -8,6 +8,10 @@ const profit = require("./mock_data/profit.json");
 const upperKpi = require("./mock_data/upper-kpis.json");
 const user = require("./mock_data/user-analytics.json");
 
+app.get("/", (req, res) => {
+  return res.status(200).send("Hello my first backen app");
+});
+
 app.get("/dashboard", (req, res) => {
   try {
     return res.status(200).send(dashboard);
