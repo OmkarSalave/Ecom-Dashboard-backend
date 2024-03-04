@@ -1,7 +1,19 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Adjust the origin as needed
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 const dashboard = require("./mock_data/dashboard.json");
 const product = require("./mock_data/productsale.json");
 const profit = require("./mock_data/profit.json");
